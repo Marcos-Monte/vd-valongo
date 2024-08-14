@@ -1,0 +1,63 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    width: 595px;
+    padding: 10px 10px;
+    text-transform: uppercase;
+}
+
+.titulo{
+    text-align: center;
+    font-size: 20px;
+}
+
+.underline, .assinatura{
+    flex-grow: 1;
+}
+
+.observacao{
+    width: 100%;
+    /* height: 50px; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.linha{
+    height: 30px;
+    flex-grow: 1;
+    border-bottom: 1px solid #000;
+}
+
+.infos{
+    display: flex;
+    padding-top: 15px
+}
+
+.info, .assinatura{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info{
+    width: 25%;
+}
+
+.underline{
+    border-bottom: 1px solid black;
+}
+
+.selecaoEquipe{
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px
+}
+
+

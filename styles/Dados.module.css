@@ -1,0 +1,22 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    width: 595px;
+    padding: 20px 10px 0px 10px;
+    text-transform: uppercase;
+    /* border-bottom: 1px solid black; */
+}
+
+.titulo{
+    font-size: 26px;
+    text-align: center;
+}
+
+.texto{
+    margin: 20px 0;
+}
