@@ -6,7 +6,8 @@
 }
 
 .box{
-    width: 595px;
+    width: 100%;
+    /* width: 595px; */
     padding: 10px 10px;
     text-transform: uppercase;
 }
@@ -56,8 +57,23 @@
     padding: 30px 10px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 20px
 }
 
+.selecao{
+    text-transform: uppercase;
+    font-weight: bold;
+}
 
+
+/* Print */
+@media print{
+    .selecao{
+        border: none;
+        -webkit-appearance: none; /* Safari e Chrome */
+        -moz-appearance: none; /* Firefox */
+        appearance: none; /* Outros navegadores */
+        background: none; /* Remove o fundo padrão */
+    }
+}

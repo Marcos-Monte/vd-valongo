@@ -1,37 +1,126 @@
 import styles from '@/styles/Dados.module.css';
+import { forwardRef, useState } from 'react';
 
-export default function Dados(){
+const Dados = forwardRef(function Dados(props, ref){
+
+    function pegarDataAtual(){
+        const dataAtual = new Date();
+        const dia = dataAtual.getDate();
+        const mes = (dataAtual.getMonth() + 1);
+        const ano = dataAtual.getFullYear();
+        
+        return `${dia}/${mes}/${ano}`
+    }
+
+    
+    const [data, setData] = useState(pegarDataAtual());
+
+    const [responsavel, setResponsavel] = useState('');
+    const [id, setId] = useState('');
+    const [nome, setNome] = useState('');
+    const [sigss, setSigss] = useState('');
+    const [endereco, setEndereco] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [telefones, setTelefones] = useState('');
+
     return(
-        <section className={styles.container}>
-            <div className={styles.box}>
-                <h2 className={styles.titulo}>seub valongo</h2>
+        <section className={`${styles.container}`} ref={props.ref}>
 
-                <p className={styles.texto}>
-                    responsável pela solicitação: <strong>recepção</strong> - data: <strong>14/08/24</strong>
-                </p>
+            <h2 className={styles.titulo}>seub valongo</h2>
 
-                <p className={styles.texto}>
-                    identificação: <strong>confirmação de endereço</strong>
-                </p>
+            <form className={styles.box}>
 
-                <p className={styles.texto}
-                    >nome: <strong>marcos monte da silva junior </strong>
-                     - sigss: <strong>10370161-0</strong>
-                </p>
+                <div className={`${styles.boxInfos}`}>
 
-                <p className={styles.texto}>
-                    end: <strong>renata camara agondi - </strong> 
-                    Compl: <strong> nº 86, Apto 86 -  Saboó</strong>
-                </p>
+                    <div className={`${styles.info}`}>
+                        <label>responsável pela solicitação:</label>
+                        <input type="text" 
+                            className={`${styles.small} inputPrint`}
+                            placeholder='Responsável'
+                            value={responsavel}
+                            onChange={(e) => setResponsavel(e.target.value)}
+                        />
+                    </div>
 
-                {/* <p className={styles.texto}>
-                    Compl: <strong> nº 86, Apto 86 -  Saboó</strong>
-                </p> */}
+                    <div className={`${styles.info}`}>
+                        <p>- data: <strong>{data}</strong></p>
+                    </div>
+                </div>
 
+                <div className={`${styles.info}  `}>
+                    <label>identificação: </label>
+                    <input type="text" 
+                        className={styles.large}
+                        placeholder='Objetivo da Visita Domiciliar'
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
+                    />
+                </div>
 
-                <p className={styles.texto}>Telefones: <strong>13 999999999</strong></p>
-            </div>
+                <div className={`${styles.boxInfos}`}>
+                    
+                    <div className={`${styles.info} ${styles.large}`}>
+                        <label>nome: </label>
+                        <input type="text" 
+                            className={styles.large}
+                            placeholder='Nome Completo'
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
+                        />
+                    </div>
+
+                    
+                    <div className={styles.info}>
+                        <label>sigss: </label>
+                        <input type="text" 
+                            className={styles.small}
+                            placeholder='Código do MV'
+                            value={sigss}
+                            onChange={(e) => setSigss(e.target.value)}
+                        />
+                    </div>
+
+                </div>
+
+                <div className={`${styles.boxInfos}`}>
+                    
+                    <div className={`${styles.info} ${styles.large}`}>
+                        <label>end: </label>
+                        <input type="text" 
+                            className={styles.large}
+                            placeholder='Rua e Bairro'
+                            value={endereco}
+                            onChange={(e) => setEndereco(e.target.value)}
+                        />
+                    </div>
+
+                    
+                    <div className={styles.info}>
+                        <label>compl: </label>
+                        <input type="text" 
+                            className={styles.small}
+                            placeholder='Número'
+                            value={complemento}
+                            onChange={(e) => setComplemento(e.target.value)}
+                        />
+                    </div>
+
+                </div>
+                    
+                <div className={`${styles.info}`}>
+                    <label>telefones: </label>
+                    <input type="text" 
+                        className={styles.large}
+                        placeholder='Todos os contatos'
+                        value={telefones}
+                        onChange={(e) => setTelefones(e.target.value)}
+                    />
+                </div>
+
+            </form>
             
         </section>
     )
-}
+});
+
+export default Dados

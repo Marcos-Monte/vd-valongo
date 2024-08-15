@@ -5,17 +5,41 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aliceblue;
 }
 
 .container{
-    height: 842px;
-    width: 595px;
-
+    max-width: 750px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid black; */
     background-color: #fff;
+    z-index: 2;
+}
+
+/* Esconde tudo exceto o que está dentro de .printArea durante a impressão */
+@media print {
+    /* .main * {
+        visibility: hidden;
+        position: relative;
+    } */
+
+    .printArea,
+    .printArea * {
+        visibility: visible;
+    }
+
+    .container {
+        z-index: 2;
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .printButton {
+        display: none; /* Esconde o botão de impressão na hora de imprimir */
+    }
 }

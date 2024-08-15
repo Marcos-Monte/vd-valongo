@@ -5,3 +5,10 @@
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Print */
+@media print{
+    input{
+        padding-left: 20px;
+    }
+}

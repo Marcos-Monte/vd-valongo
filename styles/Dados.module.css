@@ -1,22 +1,54 @@
 .container{
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-transform: uppercase;
 }
 
 .box{
-    width: 595px;
+    width: 100%;
     padding: 20px 10px 0px 10px;
-    text-transform: uppercase;
-    /* border-bottom: 1px solid black; */
+
 }
 
 .titulo{
+    padding-top: 20px;
     font-size: 26px;
     text-align: center;
 }
 
-.texto{
-    margin: 20px 0;
+.boxInfos{
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.info{
+    display: flex;
+    align-items: center;
+}
+
+.large{
+    width: 100%;
+    text-align: start;
+}
+
+.small{
+    width: 165px;
+    text-align: center;
+}
+
+/* Print */
+@media print{
+    /* Remove as bordas dos inputs durante a impressão */
+    .large, .small {
+        text-transform: uppercase;
+        border: none !important;
+        outline: none !important;
+    }
+}
+
