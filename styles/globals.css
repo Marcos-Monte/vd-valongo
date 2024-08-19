@@ -6,6 +6,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.inputPrint:hover{
+    background-color: #d9caca;
+}
+
 /* Print */
 @media print{
     input{

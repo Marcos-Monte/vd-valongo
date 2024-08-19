@@ -1,10 +1,6 @@
 import styles from '@/styles/Obs.module.css';
-import { useState } from 'react';
 
 export default function Obs(){
-
-    const [equipe, setEquipe]=useState('');
-    const [acs, setAcs]=useState('');
 
     return(
         <section className={styles.container}>
@@ -93,36 +89,7 @@ export default function Obs(){
 
                 </div>
 
-                <div className={styles.selecaoEquipe}>
-
-                    <div>
-                        <label>Equipe: </label>
-                        <select className={styles.selecao}
-                            value={equipe}
-                            onChange={(e) => setEquipe(e.target.value)}
-                        >
-                            <option value="" disabled>Selecione uma opção</option>
-                            <option value="" onChange={(e) => setEquipe('azul')}>Azul</option>
-                            <option value="" onChange={(e) => setEquipe('verde')}>Verde</option>
-                            <option value="" onChange={(e) => setEquipe('amarela')}>Amarela</option>
-                        </select>
-                    </div>
-                                
-                    <div>
-                        <label>Agente Comunitário de Saúde: </label>
-                        <select className={styles.selecao}
-                            value={acs}
-                            onChange={(e) => setAcs(e.target.value)}
-                            required
-                        >
-                            <option value="" disabled>Selecione uma opção</option>
-                            <option value="" onChange={(e) => setEquipe('Carlos')}>Carlos</option>
-                            <option value="" onChange={(e) => setEquipe('Michelle')}>Michelle</option>
-                            <option value="" onChange={(e) => setEquipe('Aline')}>Aline</option>
-                        </select>
-                    </div>
-
-                </div>
+                
                     
             </div>
         </section>

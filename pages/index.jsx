@@ -4,22 +4,15 @@ import styles from "@/styles/Home.module.css";
 
 import Head from "next/head";
 import Dados from "./Components/Dados";
+import Equipe from './Components/Equipe';
 import Header from "./Components/Header";
 import Obs from "./Components/Obs";
 
-export default function Home() {
-  
-  const printRef = useRef();
+import handlePrint from './services/service';
 
-  function handlePrint(){
-    console.log('Botao Fora')
-      if(printRef.current){
-          printRef.current.style.visibility = 'visible';
-          window.print();
-          printRef.current.style.visibility = 'hidden';
-          console.log('Botao Dentro')
-      }
-  }
+export default function Home() {
+
+  const printRef = useRef();
 
   return (
     <>
@@ -36,8 +29,9 @@ export default function Home() {
           <Header />
           <Dados/>
           <Obs />
+          <Equipe />
 
-          <button onClick={handlePrint} className={styles.printButton}>
+          <button onClick={() => handlePrint(printRef)} className={styles.printButton}>
                 Imprimir Formulário
             </button>
         </div>

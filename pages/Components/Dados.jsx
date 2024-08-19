@@ -1,17 +1,9 @@
 import styles from '@/styles/Dados.module.css';
 import { forwardRef, useState } from 'react';
 
+import { pegarDataAtual } from '@/pages/services/service';
+
 const Dados = forwardRef(function Dados(props, ref){
-
-    function pegarDataAtual(){
-        const dataAtual = new Date();
-        const dia = dataAtual.getDate();
-        const mes = (dataAtual.getMonth() + 1);
-        const ano = dataAtual.getFullYear();
-        
-        return `${dia}/${mes}/${ano}`
-    }
-
     
     const [data, setData] = useState(pegarDataAtual());
 
@@ -23,10 +15,14 @@ const Dados = forwardRef(function Dados(props, ref){
     const [complemento, setComplemento] = useState('');
     const [telefones, setTelefones] = useState('');
 
+    function handleId(event){
+        setId(event.target.value)
+    }
+
     return(
         <section className={`${styles.container}`} ref={props.ref}>
 
-            <h2 className={styles.titulo}>seub valongo</h2>
+            <h2 className={styles.titulo}>usf valongo</h2>
 
             <form className={styles.box}>
 
@@ -39,6 +35,7 @@ const Dados = forwardRef(function Dados(props, ref){
                             placeholder='Responsável'
                             value={responsavel}
                             onChange={(e) => setResponsavel(e.target.value)}
+                            required
                         />
                     </div>
 
@@ -47,14 +44,22 @@ const Dados = forwardRef(function Dados(props, ref){
                     </div>
                 </div>
 
-                <div className={`${styles.info}  `}>
+                <div className={`${styles.boxInfos}  `}>
+
                     <label>identificação: </label>
-                    <input type="text" 
-                        className={styles.large}
-                        placeholder='Objetivo da Visita Domiciliar'
-                        value={id}
-                        onChange={(e) => setId(e.target.value)}
-                    />
+
+                    <select
+                        className={`${styles.large} inputPrint`}
+                        value={id} 
+                        onChange={handleId} 
+                        required
+                    >
+                        <option className={styles.opcao} value="">---</option>
+                        <option className={styles.opcao}  value="confirmar endereco">CONFIRMAÇÃO DE ENDEREÇO</option>
+                        <option className={styles.opcao}  value="busca ativa">BUSCA ATIVA</option>
+                        <option className={styles.opcao}  value="abertura pn">ABERTURA DE PRÉ-NATAL</option>
+                        <option className={styles.opcao}  value="outros">OUTROS</option>
+                    </select>
                 </div>
 
                 <div className={`${styles.boxInfos}`}>
@@ -62,7 +67,7 @@ const Dados = forwardRef(function Dados(props, ref){
                     <div className={`${styles.info} ${styles.large}`}>
                         <label>nome: </label>
                         <input type="text" 
-                            className={styles.large}
+                            className={`${styles.large} inputPrint`}
                             placeholder='Nome Completo'
                             value={nome}
                             onChange={(e) => setNome(e.target.value)}
@@ -73,7 +78,7 @@ const Dados = forwardRef(function Dados(props, ref){
                     <div className={styles.info}>
                         <label>sigss: </label>
                         <input type="text" 
-                            className={styles.small}
+                            className={`${styles.small} inputPrint`}
                             placeholder='Código do MV'
                             value={sigss}
                             onChange={(e) => setSigss(e.target.value)}
@@ -87,7 +92,7 @@ const Dados = forwardRef(function Dados(props, ref){
                     <div className={`${styles.info} ${styles.large}`}>
                         <label>end: </label>
                         <input type="text" 
-                            className={styles.large}
+                            className={`${styles.large} inputPrint`}
                             placeholder='Rua e Bairro'
                             value={endereco}
                             onChange={(e) => setEndereco(e.target.value)}
@@ -98,7 +103,7 @@ const Dados = forwardRef(function Dados(props, ref){
                     <div className={styles.info}>
                         <label>compl: </label>
                         <input type="text" 
-                            className={styles.small}
+                            className={`${styles.small} inputPrint`}
                             placeholder='Número'
                             value={complemento}
                             onChange={(e) => setComplemento(e.target.value)}
@@ -107,10 +112,10 @@ const Dados = forwardRef(function Dados(props, ref){
 
                 </div>
                     
-                <div className={`${styles.info}`}>
+                <div className={`${styles.boxInfos}`}>
                     <label>telefones: </label>
                     <input type="text" 
-                        className={styles.large}
+                        className={`${styles.large} inputPrint`}
                         placeholder='Todos os contatos'
                         value={telefones}
                         onChange={(e) => setTelefones(e.target.value)}

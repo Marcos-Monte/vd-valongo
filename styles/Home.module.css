@@ -9,6 +9,7 @@
 
 .container{
     max-width: 750px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,12 +18,22 @@
     z-index: 2;
 }
 
+.printButton{
+    padding: .7em;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+/* Hover */
+.printButton:hover{
+    background-color: greenyellow;
+    color: black
+}
+
 /* Esconde tudo exceto o que está dentro de .printArea durante a impressão */
 @media print {
-    /* .main * {
-        visibility: hidden;
-        position: relative;
-    } */
 
     .printArea,
     .printArea * {
@@ -39,7 +50,8 @@
         bottom: 0;
     }
 
+     /* Esconde o botão de impressão na hora de imprimir */
     .printButton {
-        display: none; /* Esconde o botão de impressão na hora de imprimir */
+        display: none;
     }
 }

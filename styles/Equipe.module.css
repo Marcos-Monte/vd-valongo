@@ -1,0 +1,29 @@
+.selecaoEquipe{
+    width: 100%;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: #fff;
+}
+
+.selecao{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.texto{
+    text-transform: uppercase;
+}
+
+/* Print */
+@media print{
+    .selecao{
+        border: none;
+        -webkit-appearance: none; /* Safari e Chrome */
+        -moz-appearance: none; /* Firefox */
+        appearance: none; /* Outros navegadores */
+        background: none; /* Remove o fundo padrão */
+    }
+}

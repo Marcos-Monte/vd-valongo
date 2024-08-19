@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
 }
 
 .box{
@@ -51,29 +52,4 @@
 
 .underline{
     border-bottom: 1px solid black;
-}
-
-.selecaoEquipe{
-    padding: 30px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px
-}
-
-.selecao{
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-
-/* Print */
-@media print{
-    .selecao{
-        border: none;
-        -webkit-appearance: none; /* Safari e Chrome */
-        -moz-appearance: none; /* Firefox */
-        appearance: none; /* Outros navegadores */
-        background: none; /* Remove o fundo padrão */
-    }
 }
