@@ -49,6 +49,11 @@
         text-transform: uppercase;
         border: none !important;
         outline: none !important;
+        border: none;
+        -webkit-appearance: none; /* Safari e Chrome */
+        -moz-appearance: none; /* Firefox */
+        appearance: none; /* Outros navegadores */
+        background: none; /* Remove o fundo padrão */
     }
 }
 

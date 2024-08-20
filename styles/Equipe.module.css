@@ -1,11 +1,15 @@
 .selecaoEquipe{
     width: 100%;
-    padding: 30px 10px;
+    padding: 20px 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
     background-color: #fff;
+}
+
+.box{
+    display: flex;
 }
 
 .selecao{

@@ -19,28 +19,32 @@ export default function Equipe(){
     return(
         <section className={styles.selecaoEquipe}>
 
-                    <div>
-                        <label>Equipe: </label>
-                        <select className={styles.selecao} value={equipe} onChange={hangleEquipe} required>
-                            <option className={styles.opcao} value="">Selecione uma opção</option>
-                            <option className={styles.opcao} value="azul">azul</option>
-                            <option className={styles.opcao} value="verde">verde</option>
-                            <option className={styles.opcao} value="amarela">amarela</option>
-                        </select>
-                    </div>
+            <div className={styles.box}>
+
+                <div>
+                    <label>Equipe: </label>
+                    <select className={styles.selecao} value={equipe} onChange={hangleEquipe} required>
+                        <option className={styles.opcao} value="">---</option>
+                        <option className={styles.opcao} value="azul">azul</option>
+                        <option className={styles.opcao} value="verde">verde</option>
+                        <option className={styles.opcao} value="amarela">amarela</option>
+                    </select>
+                </div>
                                 
-                    <div>
-                        <label>Agente Comunitário de Saúde: </label>
-                        <select className={styles.selecao} value={acs} onChange={handleAcs} required>
-                            <option className={styles.opcao} value="">Selecione uma opção</option>
-                            <option value="carlos">carlos</option>
-                            <option value="fernanda">fernanda</option>
-                            <option value="bianca">bianca</option>
-                            <option value="michelle">michelle</option>
-                            <option value="luana">luana</option>
-                            <option value="aline">aline</option>
-                        </select>
-                    </div>
+                <div>
+                    <label>ACS: </label>
+                    <select className={styles.selecao} value={acs} onChange={handleAcs} required>
+                        <option className={styles.opcao} value="">---</option>
+                        <option value="carlos">carlos</option>
+                        <option value="fernanda">fernanda</option>
+                        <option value="bianca">bianca</option>
+                        <option value="michelle">michelle</option>
+                        <option value="luana">luana</option>
+                        <option value="aline">aline</option>
+                    </select>
+                </div>
+
+            </div>
 
                 <div>
 
