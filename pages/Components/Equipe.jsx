@@ -1,9 +1,8 @@
 import styles from '@/styles/Equipe.module.css';
 
-import { pegarDataDevolução } from '@/pages/services/service';
 import { useState } from 'react';
 
-export default function Equipe(){
+export default function Equipe(props){
 
     const [equipe, setEquipe] = useState('');
     const [acs, setAcs] = useState('');
@@ -46,13 +45,12 @@ export default function Equipe(){
 
             </div>
 
-                <div>
+            <div>
+                <p className={styles.texto}>
+                    documento válido até: <strong>{props.devolucao}</strong>
+                </p>
+            </div>
 
-                    <p className={styles.texto}>
-                        documento válido até: <strong>{pegarDataDevolução()}</strong>
-                    </p>
-                </div>
-
-                </section>
+        </section>
     )
 }

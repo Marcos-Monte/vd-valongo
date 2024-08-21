@@ -3,10 +3,8 @@ import { useRef } from 'react';
 import styles from "@/styles/Home.module.css";
 
 import Head from "next/head";
-import Dados from "./Components/Dados";
-import Equipe from './Components/Equipe';
-import Header from "./Components/Header";
-import Obs from "./Components/Obs";
+import Botao from './Components/Botao';
+import Documento from './Components/Documento';
 
 import handlePrint from './services/service';
 
@@ -23,17 +21,17 @@ export default function Home() {
         <link rel="icon" href="/brasaoColorido.png" />
       </Head>
       
-      <main className={`${styles.main} `}  ref={printRef}>
-        <div className={styles.container}>
+      <main className={`${styles.main}`}  ref={printRef}>
+        
+        <Documento />
 
-          <Header />
-          <Dados/>
-          <Obs />
-          <Equipe />
+        <div className={styles.buttons}>
 
-          <button onClick={() => handlePrint(printRef)} className={styles.printButton}>
-                Imprimir Formulário
-            </button>
+          <Botao
+            nome='imprimir'
+            funcao={() => handlePrint(printRef)}
+          />
+
         </div>
         
       </main>

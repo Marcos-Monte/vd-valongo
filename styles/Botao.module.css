@@ -1,0 +1,25 @@
+.printButton{
+    width: 150px;
+    padding: .7em;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+}
+
+/* Hover */
+.printButton:hover{
+    background-color: greenyellow;
+    color: black
+}
+
+/* Estilos de impressão */
+
+@media print{
+
+    .printButton{
+        display: none
+    }
+
+}

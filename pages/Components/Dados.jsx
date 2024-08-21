@@ -1,18 +1,13 @@
 import styles from '@/styles/Dados.module.css';
 import { forwardRef, useState } from 'react';
 
-import { pegarDataAtual } from '@/pages/services/service';
-
-const Dados = forwardRef(function Dados(props, ref){
+const Dados = forwardRef(function Dados(props){
     
-    const [data, setData] = useState(pegarDataAtual());
-
     const [responsavel, setResponsavel] = useState('');
     const [id, setId] = useState('');
     const [nome, setNome] = useState('');
     const [sigss, setSigss] = useState('');
     const [endereco, setEndereco] = useState('');
-    const [complemento, setComplemento] = useState('');
     const [telefones, setTelefones] = useState('');
 
     function handleId(event){
@@ -40,7 +35,7 @@ const Dados = forwardRef(function Dados(props, ref){
                     </div>
 
                     <div className={`${styles.info}`}>
-                        <p>- data: <strong>{data}</strong></p>
+                        <p>- data: <strong>{props.data}</strong></p>
                     </div>
                 </div>
 
@@ -89,26 +84,15 @@ const Dados = forwardRef(function Dados(props, ref){
 
                 <div className={`${styles.boxInfos}`}>
                     
-                    <div className={`${styles.info} ${styles.large}`}>
-                        <label>end: </label>
-                        <input type="text" 
-                            className={`${styles.large} inputPrint`}
-                            placeholder='Rua e Bairro'
-                            value={endereco}
-                            onChange={(e) => setEndereco(e.target.value)}
-                        />
-                    </div>
-
                     
-                    <div className={styles.info}>
-                        <label>compl: </label>
-                        <input type="text" 
-                            className={`${styles.small} inputPrint`}
-                            placeholder='Número'
-                            value={complemento}
-                            onChange={(e) => setComplemento(e.target.value)}
-                        />
-                    </div>
+                    <label>end: </label>
+                    <input type="text" 
+                        className={`${styles.large} inputPrint`}
+                        placeholder='Endereço Completo'
+                        value={endereco}
+                        onChange={(e) => setEndereco(e.target.value)}
+                    />
+                    
 
                 </div>
                     
