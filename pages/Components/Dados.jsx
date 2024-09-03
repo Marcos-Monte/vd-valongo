@@ -57,12 +57,12 @@ const Dados = forwardRef(function Dados(props){
                     </select>
                 </div>
 
-                <div className={`${styles.boxInfos}`}>
+                {/* <div className={`${styles.boxInfos}`}>
                     
                     <div className={`${styles.info} ${styles.large}`}>
                         <label>nome: </label>
                         <input type="text" 
-                            className={`${styles.large} inputPrint`}
+                            className={`${styles.medium} inputPrint`}
                             placeholder='Nome Completo'
                             value={nome}
                             onChange={(e) => setNome(e.target.value)}
@@ -80,6 +80,33 @@ const Dados = forwardRef(function Dados(props){
                         />
                     </div>
 
+                </div> */}
+
+                <div className={`${styles.boxInfos}`}>
+                    <div className={`${styles.info} ${styles.large}`}>
+                        <label>nome: </label>
+                        <textarea 
+                            className={`${styles.medium} inputPrint`}
+                            placeholder='Nome Completo'
+                            value={nome}
+                            onChange={(e) => {
+                                setNome(e.target.value);
+                                e.target.style.height = 'auto';
+                                e.target.style.height = `${e.target.scrollHeight}px`;
+                            }}
+                            rows="1" // Inicia com uma linha
+                        />
+                    </div>
+
+                    <div className={styles.info}>
+                        <label>sigss: </label>
+                        <input type="text" 
+                            className={`${styles.small} inputPrint`}
+                            placeholder='Código do MV'
+                            value={sigss}
+                            onChange={(e) => setSigss(e.target.value)}
+                        />
+                    </div>
                 </div>
 
                 <div className={`${styles.boxInfos}`}>

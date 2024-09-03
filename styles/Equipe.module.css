@@ -10,11 +10,18 @@
 
 .box{
     display: flex;
+    gap: 20px
 }
 
 .selecao{
+    /* display: flex;  */
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.boxInput{
+    display: flex;
+    gap: 10px
 }
 
 .texto{

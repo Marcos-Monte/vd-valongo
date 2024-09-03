@@ -20,7 +20,7 @@ export default function Equipe(props){
 
             <div className={styles.box}>
 
-                <div>
+                <div className={styles.boxInput}>
                     <label>Equipe: </label>
                     <select className={styles.selecao} value={equipe} onChange={hangleEquipe} required>
                         <option className={styles.opcao} value="">---</option>
@@ -30,7 +30,7 @@ export default function Equipe(props){
                     </select>
                 </div>
                                 
-                <div>
+                <div className={styles.boxInput}>
                     <label>ACS: </label>
                     <select className={styles.selecao} value={acs} onChange={handleAcs} required>
                         <option className={styles.opcao} value="">---</option>
