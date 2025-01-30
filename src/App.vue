@@ -15,7 +15,9 @@ import Page from './components/template/Page.vue';
 // Import de Dados
 import { tiposVisitas, unidades } from './data/data';
 import eventBus from './eventBus';
-// import eventBus from './eventBus';
+// Import Dependencias
+import html2canvas from "html2canvas";
+import jsPDF from 'jspdf'; // Dependencia que gera e salva arquivo em PDF via navegador
 
   export default {
     // Registro de Componentes
@@ -37,24 +39,59 @@ import eventBus from './eventBus';
     }, 
 
     methods: {
-      imprimir(){
-         // Mostra um alerta ao usuário
-        alert('Duas caixas de diálogo de impressão serão abertas. Por favor, salve uma e imprima a outra.');
+      async imprimir(){
 
-        // Abre a primeira caixa de impressão
-        window.print();
+        // Verificar se o usuario está em um dispositivo mobile
+        const isMobile = /Android|IPhone|iPad|iPod/i.test(navigator.userAgent);
 
-        // Após a primeira impressão, abre a segunda caixa de impressão após um pequeno atraso
-        setTimeout(() => {
-            // Abre a segunda caixa de impressão
-            window.print();
+        if(isMobile){
 
-            // Após a segunda impressão, oculta o conteúdo e recarrega a página
-            setTimeout(() => {
-                
-                window.location.reload();
-            }, 100);
-        }, 500); // Ajuste o tempo se necessário para garantir que o usuário tenha tempo suficiente
+          await this.gerarPDF(); // Se for 'mobile', gera um PDF
+
+        } else {
+
+          // Mostra um alerta ao usuário
+          alert('Duas caixas de diálogo de impressão serão abertas. Por favor, salve uma e imprima a outra.');
+
+          // Abre a primeira caixa de impressão
+          window.print();
+
+          // Após a primeira impressão, abre a segunda caixa de impressão após um pequeno atraso
+          setTimeout(() => {
+              // Abre a segunda caixa de impressão
+              window.print();
+
+              // Após a segunda impressão, oculta o conteúdo e recarrega a página
+              setTimeout(() => {
+                  
+                  window.location.reload();
+              }, 100);
+          }, 500); // Ajuste o tempo se necessário para garantir que o usuário tenha tempo suficiente
+
+        }
+
+        
+      },
+
+      async gerarPDF(){
+
+        const arquivo = document.getElementById('App'); // Armazena o que deve ser transformado em PDF
+
+        if(!arquivo){
+          alert('Erro: Arquivo não encontrado para gerar o PDF!');
+          return;
+        }
+
+        const canvas = await html2canvas(arquivo); // Captura a área como imagem
+        const imgData = canvas.toDataURL('image/png'); // Converte a imagem para formato PNG
+
+        const pdf = new jsPDF('p', 'mm', 'a4'); // Criando um PDF no formato A4
+        const imgWidth = 210; // Largura do PDF em mm (A4 = 210mm)
+        const imgHeight = (canvas.height * imgWidth) / canvas.width; // Calcula altura proporcional
+
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight); // Adicionando a imagem ao PDF
+        pdf.save('arquivo-preendhico.pdf'); // Salva o PDF no dispositivo do usuário
+
       }
     }
 
