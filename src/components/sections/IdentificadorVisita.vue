@@ -1,0 +1,146 @@
+<template>
+    <!-- Componente refere ao compilado de dados da visita (usuario, ação, dados, etc) -->
+    <section class="content">
+
+        <div class="box">
+            <!-- Recebe componente 'Rotulo' e passa valores via 'props' para componente Filho -->
+            <!-- Rotulo: Recebe 'nomes' via 'props' e 'slot' para receber qualquer tipo de valor ou Tipo de Input -->
+            <Rotulo labelName="responsável pela solicitação:" lengthInput="small">
+                <!-- Input: faz 'two-way-databind' por meio da diretiva 'v-model'-->
+                <input type="text" v-model="visita.responsavel" required placeholder="Responsável">
+            </Rotulo>
+
+            <MostrarData propsValor="0" propsTexto="data:"/>
+
+        </div>
+
+        <div class="box">
+            <Rotulo labelName="identificacao:" lengthInput="large">
+                <!-- Input do tipo Select: faz 'two-way-databind' por meio da diretiva 'v-model'-->
+                <select v-model="visita.tipo">
+                    <option value="" disabled selected>Tipo de Visita</option> <!-- Placeholder -->
+                    <!-- Option: percorre arrey de objetos 'tipos' e o 'tipo' selecionada é enviada via 'value' para o 'v-model' no 'select'-->
+                    <option v-for="(tipo, index) in tipos"
+                        :key="index"
+                        :value="tipo"
+                    >
+                        {{ tipo.toUpperCase() }}
+                    </option>
+                </select>
+            </Rotulo>
+        </div>
+
+        <div class="box">
+            <Rotulo labelName="Nome: " lengthInput="medium">
+                <!-- Input: faz 'two-way-databind' por meio da diretiva 'v-model'-->
+                <input type="text" v-model="visita.nome" required placeholder="Nome Completo">
+            </Rotulo>
+        
+
+            <Rotulo labelName="sigss:" lengthInput="small">
+                <!-- Input: faz 'two-way-databind' por meio da diretiva 'v-model'-->
+                <input type="text" v-model="visita.sigss" required placeholder="Código do MV">
+            </Rotulo>
+
+        </div>
+
+        <div class="box">
+            <Rotulo labelName="end:" lengthInput="large">
+                <!-- Input: faz 'two-way-databind' por meio da diretiva 'v-model'-->
+                <input type="text" v-model="visita.end" required placeholder="Endereço Completo">
+            </Rotulo>
+        </div>
+
+        <div class="box">
+            <Rotulo labelName="telefones: " lengthInput="large">
+                <!-- Input: faz 'two-way-databind' por meio da diretiva 'v-model'-->
+                <input type="text" v-model="visita.telefones" required placeholder="Todos os Contatos">
+            </Rotulo>
+        </div>
+
+    </section>
+    
+</template>
+
+<script>
+// Import de base de dados
+// import { tiposVisitas } from '../../data/data.js';
+import eventBus from '../../eventBus.js';
+// Import de Componentes
+import Rotulo from '../component/Input.vue';
+import MostrarData from '../component/MostrarData.vue';
+
+    export default {
+        // Registro de Componentes
+        components: {Rotulo, MostrarData},
+
+        // Dados do Componente
+        data(){
+            return {
+                // Objeto que armazena os dados da Visita
+                visita: {
+                    responsavel: '',
+                    tipo: '',
+                    nome: '',
+                    sigss: '',
+                    end: '',
+                    telefones: '',
+                },
+                // Armazena um Array com os tipos das visitas
+                tipos: [],
+
+            }
+        },
+
+        // Eventos ao 'criar' a aplicação
+        mounted(){
+            // Ouvir o evento indicado  e executar a função 'callback'
+            eventBus.on('tiposVisitasCarregado', (data) => {
+                const tiposVisitas = data
+                
+                this.tipos = tiposVisitas
+            })
+        },
+
+        unmounted() {
+            // Remove o evento ao destruir o componente para evitar vazamento de memória
+            eventBus.off('tiposVisitasCarregado', this.listener);
+        },
+
+    }
+
+</script>
+
+<style lang="scss" scoped>
+
+    .content {
+        width: 100%;
+        padding: 1rem 0;
+
+        .box {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .5rem;
+            
+            input {
+                text-transform: uppercase;
+            }
+
+            select{
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    @media print {
+        .box input, .box select {
+            border: none;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+    }
+
+</style>
