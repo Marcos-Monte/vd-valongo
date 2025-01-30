@@ -3,7 +3,7 @@
   <div id="App">
     <!-- Renderiza a pagina por completo -->
     <Page />
-
+    <!-- Botão que gera ação de Imprimir (Desktop) ou Gerar o PDF (Mobile) -->
     <button @click="imprimirConteudo()" class="naoImprimir">Imprimir</button>
   </div>
 
@@ -80,5 +80,6 @@ import { imprimir } from './services/service';
       }
 
     }
+
 
 </style>

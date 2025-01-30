@@ -102,7 +102,7 @@ import eventBus from '../../eventBus.js';
             display: flex;
             justify-content: space-between;
             align-items: center;
-            // flex-wrap: wrap;
+            
             gap: .5rem;
             padding: 1rem 0;
 
@@ -120,6 +120,13 @@ import eventBus from '../../eventBus.js';
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
+        }
+    }
+
+    // Medias
+    @media (max-width: 600px){
+        .box {
+            flex-wrap: wrap;
         }
     }
     

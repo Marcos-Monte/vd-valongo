@@ -133,13 +133,21 @@ import MostrarData from '../component/MostrarData.vue';
             }
         }
     }
-
+// Estilos de Impressão
     @media print {
         .box input, .box select {
             border: none;
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
+        }
+    }
+
+    // Medias
+    @media (max-width: 600px){
+        .box {
+            width: 100%;
+            flex-wrap: wrap-reverse;
         }
     }
 

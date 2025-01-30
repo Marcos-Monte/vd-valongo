@@ -35,6 +35,7 @@
         height: 7rem;
         display: flex;
         justify-content: space-around;
+        flex-wrap: wrap;
         align-items: center;
         position: relative;
 
@@ -78,6 +79,11 @@
         height: 100%;
         border-bottom: 1px solid black
     }
-
+    // Medias
+    @media (max-width: 600px){
+        header{
+            display: none;
+        }
+    }
 
 </style>

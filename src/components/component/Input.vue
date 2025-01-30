@@ -64,4 +64,15 @@
 
     }
 
+     // Medias
+    @media (max-width: 600px){
+        .rotulo {
+            .medium, .small, .large {
+                flex: 1;
+                width: 100%;
+            }
+            
+        }
+    }
+
 </style>

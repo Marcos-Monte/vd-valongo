@@ -65,7 +65,7 @@ import Tentativas from '../sections/Tentativas.vue';
 <style lang="scss">
 
     main {
-        padding: 1rem 0;
+        padding: 1rem .5rem;
 
         .seletorUnidade{
             width: 100%;
@@ -88,6 +88,23 @@ import Tentativas from '../sections/Tentativas.vue';
             -webkit-appearance: none;
             -moz-appearance: none;
         }
+    }
+
+     // Medias
+    @media (max-width: 600px){
+        .seletorUnidade{
+            width: 100%;
+        }
+
+        @media print {
+        .seletorUnidade {
+            border: none;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            text-transform: uppercase;
+        }
+    }
     }
 
 </style>

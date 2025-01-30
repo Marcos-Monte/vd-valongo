@@ -25,11 +25,18 @@ import { pegarData } from '../../services/service';
 
 </script>
 
-<style>
+<style scoped>
 
     .boxData{
         width: 30%;
         text-transform: uppercase;
+    }
+
+    /*  */
+    @media (max-width: 600px){
+        .boxData {
+            width: 100%;
+        }
     }
 
 </style>
