@@ -8,6 +8,8 @@
 </template>
 
 <script>
+// Import serviços
+import { pegarData } from '../../services/service';
 
     export default {
         // Registrando Props
@@ -15,14 +17,8 @@
 
         // Método pega a data do Sistema e, caso seja indicado, adiciona 1 na variavel 'ano'
         methods: {
-            mostrarData(adicional = 0){
-                const data = new Date;
-                let dia = data.getDate()
-                let mes = data.getMonth() + 1
-                let ano = data.getFullYear() + parseInt(adicional)
-
-                // Retorna Template String para Renderização
-                return `${dia}/${mes}/${ano}`
+            mostrarData(adicional){
+                return pegarData(adicional)
             }
         }
     }
