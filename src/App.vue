@@ -15,9 +15,6 @@ import Page from './components/template/Page.vue';
 // Import de Dados
 import { tiposVisitas, unidades } from './data/data';
 import eventBus from './eventBus';
-// Import Dependencias
-import html2canvas from "html2canvas";
-import jsPDF from 'jspdf'; // Dependencia que gera e salva arquivo em PDF via navegador
 
   export default {
     // Registro de Componentes
@@ -39,14 +36,24 @@ import jsPDF from 'jspdf'; // Dependencia que gera e salva arquivo em PDF via na
     }, 
 
     methods: {
-      async imprimir(){
+      imprimir(){
 
         // Verificar se o usuario está em um dispositivo mobile
         const isMobile = /Android|IPhone|iPad|iPod/i.test(navigator.userAgent);
 
         if(isMobile){
 
-          await this.gerarPDF(); // Se for 'mobile', gera um PDF
+          // await this.gerarPDF(); // Se for 'mobile', gera um PDF
+          alert("O documento será salvo automaticamente como PDF.");
+
+          // Simula a impressão e força a opção de salvar como PDF
+          const printSettings = {
+              printBackground: true, // Garante que estilos CSS sejam mantidos
+              preferCSSPageSize: true // Usa o tamanho do papel definido no CSS
+          };
+
+          window.print(); // No mobile, o usuário escolhe salvar como PDF manualmente
+          window.location.reload();
 
         } else {
 
@@ -73,26 +80,6 @@ import jsPDF from 'jspdf'; // Dependencia que gera e salva arquivo em PDF via na
         
       },
 
-      async gerarPDF(){
-
-        const arquivo = document.getElementById('App'); // Armazena o que deve ser transformado em PDF
-
-        if(!arquivo){
-          alert('Erro: Arquivo não encontrado para gerar o PDF!');
-          return;
-        }
-
-        const canvas = await html2canvas(arquivo); // Captura a área como imagem
-        const imgData = canvas.toDataURL('image/png'); // Converte a imagem para formato PNG
-
-        const pdf = new jsPDF('p', 'mm', 'a4'); // Criando um PDF no formato A4
-        const imgWidth = 210; // Largura do PDF em mm (A4 = 210mm)
-        const imgHeight = (canvas.height * imgWidth) / canvas.width; // Calcula altura proporcional
-
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight); // Adicionando a imagem ao PDF
-        pdf.save('arquivo-preendhico.pdf'); // Salva o PDF no dispositivo do usuário
-
-      }
     }
 
   }
