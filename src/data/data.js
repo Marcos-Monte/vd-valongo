@@ -17,14 +17,12 @@ const unidades = [
     {
         unidade: 'consultório na rua', tipoUnidade: 'cnar', 
         microAreas: [
-            {micro: 1, acs: 'caminhao valongo', equipe: 'valongo', enfermeira: 'aparecido'},
-            {micro: 2, acs: 'casa dos artistas', equipe: 'valongo', enfermeira: 'aparecido'},
-            {micro: 3, acs: 'vlt', equipe: 'jose m./pompeia', enfermeira: 'aparecido'},
+            {micro: 1, acs: 'carlos', equipe: 'valongo', enfermeira: 'ivette'},
+            {micro: 1, acs: 'carlos', equipe: 'valongo', enfermeira: 'ivette'},
+            {micro: 5, acs: 'exemplo', equipe: 'jm-pompeia', enfermeira: 'exemplo'},
         ]
     },
 ];
-
-// Unidades
 
 // Exportando os Arrays
 export { tiposVisitas, unidades };
