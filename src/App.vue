@@ -12,30 +12,12 @@
 <script>
 // Import de Componentes
 import Page from './components/template/Page.vue';
-// Import de Dados
-import { tiposVisitas, unidades } from './data/data';
-import eventBus from './eventBus';
 // Import serviços
 import { imprimir } from './services/service';
 
   export default {
     // Registro de Componentes
     components: { Page },
-
-    data(){
-      return{
-        equipes: unidades,
-        tiposVisitas: tiposVisitas,
-        
-      }
-    },
-    // Ao 'montar / inicializar o componente', executar as ações seguintes
-    mounted(){
-      // Emitir os eventos:
-      eventBus.emit('tiposVisitasCarregado', this.tiposVisitas); // Evento: Tipos de Visitas Carregado
-      eventBus.emit('equipesCarregadas', this.equipes); // Evento: Equipes Cadastradas Carregadas
-
-    }, 
 
     methods: {
       // Necessário criar um método que 'ative' o método importado

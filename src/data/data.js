@@ -5,7 +5,7 @@ const tiposVisitas = ['confirmação de endereço', 'busca ativa', 'abertura de 
 const unidades = [
     {
         unidade: 'valongo', tipoUnidade: 'usf', 
-        opcoes: [
+        microAreas: [
             {micro: 1, acs: 'carlos', equipe: 'azul', enfermeira: 'ivette'},
             {micro: 8, acs: 'fernanda', equipe: 'azul', enfermeira: 'ivette'},
             {micro: 9, acs: 'bianca', equipe: 'azul', enfermeira: 'ivette'},
@@ -16,7 +16,7 @@ const unidades = [
     },
     {
         unidade: 'consultório na rua', tipoUnidade: 'cnar', 
-        opcoes: [
+        microAreas: [
             {micro: 1, acs: 'caminhao valongo', equipe: 'valongo', enfermeira: 'aparecido'},
             {micro: 2, acs: 'casa dos artistas', equipe: 'valongo', enfermeira: 'aparecido'},
             {micro: 3, acs: 'vlt', equipe: 'jose m./pompeia', enfermeira: 'aparecido'},

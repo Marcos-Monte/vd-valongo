@@ -3,6 +3,25 @@
     <section class="content">
 
         <div class="box">
+                <!-- Renderiza o tipo e qual unidade será feita o documento de visita -->
+                <select class="seletorUnidade" v-model="unidadeEscolhida" @change="selecionarUnidade()">
+
+                    <option value="" disabled selected>selecione uma unidade</option> <!-- Placeholder -->
+                    
+                    <option v-for="(unidade, index) in unidades"
+                        :key="index"
+                        :value="unidade"
+                    >
+                        {{ unidade.tipoUnidade }} - {{ unidade.unidade }}
+                            
+                    </option>
+
+                </select>
+
+
+        </div>
+
+        <div class="box">
             <!-- Recebe componente 'Rotulo' e passa valores via 'props' para componente Filho -->
             <!-- Rotulo: Recebe 'nomes' via 'props' e 'slot' para receber qualquer tipo de valor ou Tipo de Input -->
             <Rotulo labelName="responsável pela solicitação:" lengthInput="small">
@@ -63,12 +82,13 @@
 </template>
 
 <script>
-// Import de base de dados
-// import { tiposVisitas } from '../../data/data.js';
+// Import Barramento
 import eventBus from '../../eventBus.js';
 // Import de Componentes
 import Rotulo from '../component/Input.vue';
 import MostrarData from '../component/MostrarData.vue';
+// Import Dados
+import { tiposVisitas, unidades } from '../../data/data.js';
 
     export default {
         // Registro de Componentes
@@ -86,26 +106,19 @@ import MostrarData from '../component/MostrarData.vue';
                     end: '',
                     telefones: '',
                 },
-                // Armazena um Array com os tipos das visitas
-                tipos: [],
+                // Armazena os Arrays
+                tipos: tiposVisitas,
+                unidades: unidades,
+                unidadeEscolhida: [],
 
             }
         },
 
-        // Eventos ao 'criar' a aplicação
-        mounted(){
-            // Ouvir o evento indicado  e executar a função 'callback'
-            eventBus.on('tiposVisitasCarregado', (data) => {
-                const tiposVisitas = data
-                
-                this.tipos = tiposVisitas
-            })
-        },
-
-        unmounted() {
-            // Remove o evento ao destruir o componente para evitar vazamento de memória
-            eventBus.off('tiposVisitasCarregado', this.listener);
-        },
+        methods: {
+            selecionarUnidade(){
+                eventBus.emit('escolheuUnidade', this.unidadeEscolhida)
+            }
+        }
 
     }
 
@@ -124,6 +137,12 @@ import MostrarData from '../component/MostrarData.vue';
             align-items: center;
             gap: .5rem;
             
+            .seletorUnidade{
+                width: 100%;
+                font-size: 1.5rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
             input {
                 text-transform: uppercase;
             }
@@ -131,8 +150,10 @@ import MostrarData from '../component/MostrarData.vue';
             select{
                 text-transform: uppercase;
             }
+
         }
     }
+
 // Estilos de Impressão
     @media print {
         .box input, .box select {
@@ -141,6 +162,15 @@ import MostrarData from '../component/MostrarData.vue';
             -webkit-appearance: none;
             -moz-appearance: none;
         }
+
+        
+        .seletorUnidade {
+            border: none;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+    
     }
 
     // Medias
@@ -148,6 +178,20 @@ import MostrarData from '../component/MostrarData.vue';
         .box {
             width: 100%;
             flex-wrap: wrap-reverse;
+        }
+
+        .seletorUnidade{
+            width: 100%;
+        }
+
+        @media print {
+            .seletorUnidade {
+                border: none;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                text-transform: uppercase;
+            }
         }
     }
 

@@ -8,17 +8,17 @@
             <Rotulo labelName="micro" lengthInput="small">
 
                 <!-- Input do tipo Select: faz 'two-way-databind' por meio da diretiva 'v-model'-->
-                <select v-model="microArea" required>
+                <select v-model="micro" required>
 
                     <option value="" disabled selected>Selecione um ACS</option> <!-- Placeholder -->
                     <!-- Option: percorre arrey de objetos 'equipes' e a 'equipe' selecionada é enviada via 'value' para o 'v-model' no 'select'-->
                     <option 
-                        v-for="(micro, index) in equipes"
+                        v-for="(microArea, index) in microAreas"
                         :key="index"
-                        :value="micro"
+                        :value="microArea"
                     >
                         <!-- {{ micro.acs.toUpperCase() }} -->
-                        {{ micro.micro }}
+                        {{ microArea.micro }}
                     </option>
 
                 </select>
@@ -27,17 +27,17 @@
 
             <Rotulo labelName="acs" lengthInput="small">
                 <!-- Lógica de Renderização: Se houver o valor indicado = ficar em letras maiusculas, senão, indicar texto generico -->
-                {{ microArea.acs ? microArea.acs.toUpperCase() : 'Indefinido' }}
+                {{ micro.acs ? micro.acs.toUpperCase() : 'Indefinido' }}
             </Rotulo>
 
             <Rotulo labelName="eq." lengthInput="small">
                 <!-- Lógica de Renderização: Se houver o valor indicado = ficar em letras maiusculas, senão, indicar texto generico -->
-                {{ microArea.equipe ? microArea.equipe.toUpperCase() : 'Indefinido' }}
+                {{ micro.equipe ? micro.equipe.toUpperCase() : 'Indefinido' }}
             </Rotulo>
 
             <Rotulo labelName="enfº" lengthInput="small">
                 <!-- Lógica de Renderização: Se houver o valor indicado = ficar em letras maiusculas, senão, indicar texto generico -->
-                {{ microArea.enfermeira ? microArea.enfermeira.toUpperCase() : 'Indefinido' }}
+                {{ micro.enfermeira ? micro.enfermeira.toUpperCase() : 'Indefinido' }}
             </Rotulo>
 
                 
@@ -67,9 +67,9 @@ import eventBus from '../../eventBus.js';
         data(){
             return {
                 // Objeto Vazio, receberá 'objeto' de responsáveis pela demanda
-                microArea: {},
+                micro: {},
                 // Variavel armazena Array de Objetos com as opções de equipes
-                equipes: []
+                microAreas: []
 
             }
         },
@@ -78,7 +78,7 @@ import eventBus from '../../eventBus.js';
         mounted(){
             // Ouvir o evento indicado  e executar a função 'callback'
             eventBus.on('escolheuUnidade', (unidadeEscolhida)=> {
-                this.equipes = unidadeEscolhida.opcoes
+                this.microAreas = unidadeEscolhida.microAreas
             })
         },
 
