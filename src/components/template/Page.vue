@@ -25,9 +25,5 @@ import Header from './Header.vue';
 
 <style lang="scss" scoped>
 
-    .page {
-        // max-width: 36.5rem;
-        
-    }
 
 </style>

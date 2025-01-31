@@ -4,7 +4,7 @@
     <!-- Renderiza a pagina por completo -->
     <Page />
     <!-- Botão que gera ação de Imprimir (Desktop) ou Gerar o PDF (Mobile) -->
-    <button @click="imprimirConteudo()" class="naoImprimir">Imprimir</button>
+    <button @click="imprimirConteudo()" class="naoImprimir">{{ windowWidth < 600? 'Salvar': 'Imprimir' }}</button>
   </div>
 
 </template>
@@ -18,6 +18,13 @@ import { imprimir } from './services/service';
   export default {
     // Registro de Componentes
     components: { Page },
+
+    data(){
+      return{
+        // Armazena a largura da tela do dispositivo no momento que é inicializado (sem necessidade de ficar monitorando)
+        windowWidth: window.innerWidth,
+      }
+    },
 
     methods: {
       // Necessário criar um método que 'ative' o método importado
@@ -34,7 +41,7 @@ import { imprimir } from './services/service';
 <style lang="scss" scoped>
   
     #App {
-      width: 100vw;
+      // width: 100vw;
       height: 100vh;
 
       display: flex;

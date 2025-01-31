@@ -56,9 +56,10 @@
             </Rotulo>
         
 
-            <Rotulo labelName="sigss:" lengthInput="small">
+            <Rotulo :labelName="windowWidth < 600? 'dn': 'sigss'" lengthInput="small">
                 <!-- Input: faz 'two-way-databind' por meio da diretiva 'v-model'-->
-                <input type="text" v-model="visita.sigss" required placeholder="Código do MV">
+                <input type="text" v-model="visita.sigss" required :placeholder="windowWidth < 600? 'data de nascimento': 'código do mv'">
+                <!-- OBS: Condicional ternária lida com as possibilidades de execução (Desktop = na Unidade ; Mobile = na Rua) -->
             </Rotulo>
 
         </div>
@@ -110,6 +111,9 @@ import { tiposVisitas, unidades } from '../../data/data.js';
                 tipos: tiposVisitas,
                 unidades: unidades,
                 unidadeEscolhida: [],
+
+                // Armazena a largura da tela do dispositivo no momento que é inicializado (sem necessidade de ficar monitorando)
+                windowWidth: window.innerWidth,
 
             }
         },
@@ -176,12 +180,7 @@ import { tiposVisitas, unidades } from '../../data/data.js';
     // Medias
     @media (max-width: 600px){
         .box {
-            width: 100%;
             flex-wrap: wrap-reverse;
-        }
-
-        .seletorUnidade{
-            width: 100%;
         }
 
         @media print {

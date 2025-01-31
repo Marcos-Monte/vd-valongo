@@ -30,7 +30,7 @@ import Tentativas from '../sections/Tentativas.vue';
 <style lang="scss">
 
     main {
-        padding: 1rem .5rem;
+        padding: 1rem 0;
 
         h2 {
             text-align: center;
