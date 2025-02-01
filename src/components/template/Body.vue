@@ -3,6 +3,7 @@
     <!-- Corpo da Aplicação, renderiza os componentes indicados -->
     <main>
         <!-- Componentes Renderizados -->
+        <Cabecalho />
         <IdentificadorVisita />
         <Tentativas />
         <IdentificadorAcs />
@@ -14,13 +15,14 @@
 <script>
 // Import de Componentes
 import Rotulo from '../component/Input.vue';
+import Cabecalho from '../sections/Cabecalho.vue';
 import IdentificadorAcs from '../sections/IdentificadorAcs.vue';
 import IdentificadorVisita from '../sections/IdentificadorVisita.vue';
 import Tentativas from '../sections/Tentativas.vue';
 
     export default {
         // Registro de Componentes
-        components: {IdentificadorVisita, IdentificadorAcs, Tentativas, Rotulo},
+        components: {IdentificadorVisita, IdentificadorAcs, Tentativas, Rotulo, Cabecalho},
         // Dados usados pelo Componente
 
     }

@@ -1,7 +1,6 @@
 <template>
     <!-- Pagina da aplicação, renderiza o 'Cabelalho e o Corpo da aplicação' -->
     <div class="page">
-
         <Header />
         <Body />
 
@@ -17,7 +16,7 @@ import Header from './Header.vue';
 
     export default {
         // Registro dos Componentes
-        components: {Header , Body}
+        components: {Header, Body}
 
     }
 
@@ -25,5 +24,8 @@ import Header from './Header.vue';
 
 <style lang="scss" scoped>
 
+    .page{
+        max-width: 40rem ;
+    }
 
 </style>

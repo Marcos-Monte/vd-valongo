@@ -23,12 +23,14 @@ import { imprimir } from './services/service';
       return{
         // Armazena a largura da tela do dispositivo no momento que é inicializado (sem necessidade de ficar monitorando)
         windowWidth: window.innerWidth,
+        teste: true,
       }
     },
 
     methods: {
       // Necessário criar um método que 'ative' o método importado
       imprimirConteudo(){
+        
         imprimir('App') // Recebe o valor do Id da Pagina
       }
 
