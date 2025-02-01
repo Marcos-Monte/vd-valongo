@@ -3,26 +3,17 @@ const tiposVisitas = ['confirmação de endereço', 'busca ativa', 'abertura de 
 
 // Array com objetos que contém cada opção da equipe
 const unidades = [
-    {
-        unidade: 'valongo', tipoUnidade: 'usf', 
-        microAreas: [
-            {micro: 1, acs: 'carlos', equipe: 'azul', enfermeira: 'ivette'},
-            {micro: 8, acs: 'fernanda', equipe: 'azul', enfermeira: 'ivette'},
-            {micro: 9, acs: 'bianca', equipe: 'azul', enfermeira: 'ivette'},
-            {micro: 5, acs: 'michelle', equipe: 'verde', enfermeira: 'suellen'},
-            {micro: 6, acs: 'aline', equipe: 'amarela', enfermeira: 'rosana'},
-            {micro: 7, acs: 'luana', equipe: 'amarela', enfermeira: 'rosana'},
-        ]
-    },
-    {
-        unidade: 'consultório na rua', tipoUnidade: 'cnar', 
-        microAreas: [
-            {micro: 1, acs: 'carlos', equipe: 'valongo', enfermeira: 'ivette'},
-            {micro: 1, acs: 'carlos', equipe: 'valongo', enfermeira: 'ivette'},
-            {micro: 5, acs: 'exemplo', equipe: 'jm-pompeia', enfermeira: 'exemplo'},
-        ]
-    },
-];
+    // Objetos reorganizados
+    {unidade: 'valongo', tipoUnidade: 'usf', micro: 1, acs: 'carlos', equipe: 'azul', enfermeira: 'ivette'},
+    {unidade: 'valongo', tipoUnidade: 'usf', micro: 8, acs: 'fernanda', equipe: 'azul', enfermeira: 'ivette'},
+    {unidade: 'valongo', tipoUnidade: 'usf', micro: 9, acs: 'bianca', equipe: 'azul', enfermeira: 'ivette'},
+    {unidade: 'valongo', tipoUnidade: 'usf', micro: 5, acs: 'michelle', equipe: 'verde', enfermeira: 'suellen'},
+    {unidade: 'valongo', tipoUnidade: 'usf', micro: 6, acs: 'aline', equipe: 'amarela', enfermeira: 'rosana'},
+    {unidade: 'valongo', tipoUnidade: 'usf', micro: 7, acs: 'luana', equipe: 'amarela', enfermeira: 'rosana'},
+    {unidade: 'consultório na rua', tipoUnidade: 'cnar', micro: 1, acs: 'carlos', equipe: 'valongo', enfermeira: 'ivette'},
+    {unidade: 'consultório na rua', tipoUnidade: 'cnar', micro: 1, acs: 'carlos', equipe: 'valongo', enfermeira: 'ivette'},
+    {unidade: 'consultório na rua', tipoUnidade: 'cnar', micro: 5, acs: 'exemplo', equipe: 'jm-pompeia', enfermeira: 'exemplo'}
+]
 
 // Exportando os Arrays
 export { tiposVisitas, unidades };

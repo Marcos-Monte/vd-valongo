@@ -78,13 +78,17 @@ import eventBus from '../../eventBus.js';
         mounted(){
             // Ouvir o evento indicado  e executar a função 'callback'
             eventBus.on('escolheuUnidade', (unidadeEscolhida)=> {
-                this.microAreas = unidadeEscolhida.microAreas
+                // Evento, primeiramente, reseta os valores das variaveis
+                this.microAreas = []
+                this.micro = {}
+                // Atribui o Array de Objetos enviado pelo Evento Personalizado na Variavel Local
+                this.microAreas = unidadeEscolhida
             })
         },
 
         unmounted() {
             // Remove o evento ao destruir o componente para evitar vazamento de memória
-            eventBus.off('equipesCarregadas', this.listener);
+            eventBus.off('escolheuUnidade', this.listener);
         },
 
     }

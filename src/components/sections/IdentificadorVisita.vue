@@ -3,21 +3,20 @@
     <section class="content">
 
         <div class="box">
-                <!-- Renderiza o tipo e qual unidade será feita o documento de visita -->
-                <select class="seletorUnidade" v-model="unidadeEscolhida" @change="selecionarUnidade()">
+            <!-- Renderiza o tipo e qual unidade será feita o documento de visita -->
+            <select class="seletorUnidade" v-model="unidadeEscolhida" @change="selecionarUnidade()">
 
-                    <option value="" disabled selected>selecione uma unidade</option> <!-- Placeholder -->
-                    
-                    <option v-for="(unidade, index) in unidades"
-                        :key="index"
-                        :value="unidade"
-                    >
-                        {{ unidade.tipoUnidade }} - {{ unidade.unidade }}
-                            
-                    </option>
+                <option value="" disabled selected>selecione uma unidade</option> <!-- Placeholder -->
+                
+                <option v-for="(unidade, index) in opcoesDeUnidades"
+                    :key="index"
+                    :value="unidade"
+                >
+                    {{ unidade }}
+                        
+                </option>
 
-                </select>
-
+            </select>
 
         </div>
 
@@ -110,18 +109,31 @@ import { tiposVisitas, unidades } from '../../data/data.js';
                 // Armazena os Arrays
                 tipos: tiposVisitas,
                 unidades: unidades,
-                unidadeEscolhida: [],
+                unidadeEscolhida: "",
+                opcoesDeUnidades: "",
 
                 // Armazena a largura da tela do dispositivo no momento que é inicializado (sem necessidade de ficar monitorando)
                 windowWidth: window.innerWidth,
 
             }
         },
-
+        // Métodos Computados:
+        computed: {
+            // Monitora a variavel indicada e renderiza se tiver alguma mudança
+            opcoesDeUnidades(){
+                return [...new Set(this.unidades.map((opcao) => opcao.unidade))]
+            },
+        },  
+        // Métodos de Ação:
         methods: {
+            // É chamada por 'OnChange' e cria sequencia com o 'value' recebido
             selecionarUnidade(){
-                eventBus.emit('escolheuUnidade', this.unidadeEscolhida)
-            }
+                // Cria novo Array só com os Objetos que correspondem ao filtro
+                const equiperUnidadesEscolhida = this.unidades.filter((equipe) => equipe.unidade === this.unidadeEscolhida)
+                // Emite Evento personalizado e envia o novo Array 
+                eventBus.emit('escolheuUnidade', equiperUnidadesEscolhida)
+            },
+
         }
 
     }
