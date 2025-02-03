@@ -1,8 +1,9 @@
 <template>
   <!-- Componente PRINCIPAL da aplicação -->
   <div id="App">
+    <Header class="naoImprimir"/>
     <!-- Renderiza a pagina por completo -->
-    <Page />
+    <Page id="Page"/>
     <!-- Botão que gera ação de Imprimir (Desktop) ou Gerar o PDF (Mobile) -->
     <button @click="imprimirConteudo()" class="naoImprimir">{{ windowWidth < 600? 'Salvar': 'Imprimir' }}</button>
   </div>
@@ -12,12 +13,13 @@
 <script>
 // Import de Componentes
 import Page from './components/template/Page.vue';
+import Header from './components/template/Header.vue';
 // Import serviços
 import { imprimir } from './services/service';
 
   export default {
     // Registro de Componentes
-    components: { Page },
+    components: { Page, Header },
 
     data(){
       return{
@@ -31,7 +33,7 @@ import { imprimir } from './services/service';
       // Necessário criar um método que 'ative' o método importado
       imprimirConteudo(){
         
-        imprimir('App') // Recebe o valor do Id da Pagina
+        imprimir('Page') // Recebe o valor do Id da Pagina
       }
 
     }
@@ -54,9 +56,10 @@ import { imprimir } from './services/service';
 
       button {
         padding: 1rem;
-        border-radius: 1rem;
+        border-radius: 2rem;
         background-color: greenyellow;
         font-size: 1.2rem;
+        font-weight: 900;
       }
 
       button:hover {

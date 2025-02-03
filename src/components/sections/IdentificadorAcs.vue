@@ -18,7 +18,7 @@
                         :value="microArea"
                     >
                         <!-- {{ micro.acs.toUpperCase() }} -->
-                        {{ microArea.micro }}
+                        {{ microArea.micro.toUpperCase() }}
                     </option>
 
                 </select>
@@ -111,7 +111,7 @@ import eventBus from '../../eventBus.js';
             padding: 1rem 0;
 
             select {
-                width: 3rem
+                display: block;
             }
             
         }

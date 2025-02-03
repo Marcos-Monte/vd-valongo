@@ -12,7 +12,7 @@
                     :key="index"
                     :value="unidade"
                 >
-                    {{ unidade }}
+                    Unidade - {{ unidade }}
                         
                 </option>
 
