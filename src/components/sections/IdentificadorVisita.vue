@@ -110,7 +110,7 @@ import { tiposVisitas, unidades } from '../../data/data.js';
                 tipos: tiposVisitas,
                 unidades: unidades,
                 unidadeEscolhida: "",
-                opcoesDeUnidades: "",
+                // opcoesDeUnidades: "",
 
                 // Armazena a largura da tela do dispositivo no momento que é inicializado (sem necessidade de ficar monitorando)
                 windowWidth: window.innerWidth,

@@ -40,6 +40,8 @@ async function imprimir(conteudo){
 
 // Método que gera e salva o arquivo em PDF se o usuario estiver em um disponitivo mobile
 async function gerarPDF(conteudo){
+
+    window.print();
         
     const pdf = new jsPDF("p", "mm", "a4");
 
