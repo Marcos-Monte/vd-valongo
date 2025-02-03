@@ -10,11 +10,18 @@ async function imprimir(conteudo){
     if(isMobile){
 
       // await this.gerarPDF(); // Se for 'mobile', gera um PDF
-        alert("O documento será salvo automaticamente como PDF.");
+        // alert("O documento será salvo automaticamente como PDF.");
 
-        await gerarPDF(conteudo); // Gera o PDF no celular
+        // await gerarPDF(conteudo); // Gera o PDF no celular
+        alert('Coloque o celular no modo HORIZONTAL para melhor experiência!!!')
 
-        } else {
+        // Abre a primeira caixa de impressão
+        window.print();
+
+        // Após a 'impressão', oculta o conteúdo e recarrega a página
+        window.location.reload();
+
+    } else {
 
         // Mostra um alerta ao usuário
         alert('Duas caixas de diálogo de impressão serão abertas. Por favor, salve uma e imprima a outra.');
