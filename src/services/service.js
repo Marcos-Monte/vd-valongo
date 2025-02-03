@@ -10,8 +10,10 @@ async function imprimir(){
         // Abre a primeira caixa de impressão
         window.print();
 
-        // Após a 'impressão', oculta o conteúdo e recarrega a página
-        window.location.reload();
+        setTimeout(() => {
+            // Após a 'impressão', oculta o conteúdo e recarrega a página
+            window.location.reload();
+        }, 8000)
 
     } else {
 
