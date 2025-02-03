@@ -1,6 +1,9 @@
 <template>
   <!-- Componente PRINCIPAL da aplicação -->
   <div id="App">
+    <!-- Alerta para o Usuário girar o Celular -->
+    {{ seMobileAlertar() }}
+
     <Header class="naoImprimir"/>
     <!-- Renderiza a pagina por completo -->
     <Page id="Page"/>
@@ -12,8 +15,8 @@
 
 <script>
 // Import de Componentes
-import Page from './components/template/Page.vue';
 import Header from './components/template/Header.vue';
+import Page from './components/template/Page.vue';
 // Import serviços
 import { imprimir } from './services/service';
 
@@ -33,9 +36,12 @@ import { imprimir } from './services/service';
       // Necessário criar um método que 'ative' o método importado
       imprimirConteudo(){
         
-        imprimir('Page') // Recebe o valor do Id da Pagina
-      }
+        imprimir() // Recebe o valor do Id da Pagina
+      }, 
 
+      seMobileAlertar(){
+        this.windowWidth<600&&alert('Para melhor experiencia, rode o celular e use no Modo Horizontal!')
+      }
     }
 
   }
